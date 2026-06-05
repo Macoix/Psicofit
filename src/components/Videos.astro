@@ -1,7 +1,6 @@
 ---
 const API_KEY = import.meta.env.YOUTUBE_API_KEY ?? process.env.YOUTUBE_API_KEY;
 const CHANNEL_HANDLE = 'oscar.psicofit';
-const _debug = { key: API_KEY ? `${API_KEY.slice(0,8)}...` : 'UNDEFINED' };
 
 type VideoItem = {
   id: string;
@@ -27,7 +26,6 @@ let apiError = false;
 
 if (API_KEY) {
   try {
-    console.log('Estoy dentro')
     // 1. Get uploads playlist ID from handle
     const chRes = await fetch(
       `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=${CHANNEL_HANDLE}&key=${API_KEY}`
@@ -90,11 +88,6 @@ const hasVideos = videos.length > 0;
       <p class="font-body text-lg text-zinc-400 max-w-xl mx-auto leading-relaxed">
         Contenido corto sobre entrenamiento, psicología del rendimiento y bienestar integral.
       </p>
-    </div>
-
-    <!-- DEBUG TEMPORAL — borrar después -->
-    <div class="text-center mb-4">
-      <code class="text-xs bg-zinc-800 text-amber-400 px-3 py-1 rounded">DEBUG: API_KEY = {_debug.key}</code>
     </div>
 
     {!API_KEY && (

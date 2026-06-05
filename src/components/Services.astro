@@ -1,0 +1,128 @@
+---
+const services = [
+  {
+    id: 'fisico',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
+    label: 'Plan',
+    name: 'Entrenamiento Personalizado',
+    subtitle: 'Enfoque Físico',
+    description: 'Rutinas progresivas diseñadas a la medida de tu cuerpo y objetivos. Seguimiento semanal y ajustes continuos para resultados reales.',
+    highlights: ['Rutinas personalizadas', 'Seguimiento semanal', 'Nutrición básica', 'Soporte por WhatsApp'],
+    featured: false,
+  },
+  {
+    id: 'estres',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
+    label: 'Plan',
+    name: 'Estrés Laboral',
+    subtitle: 'y Fatiga Mental',
+    description: 'Estrategias psicológicas y físicas para romper el ciclo del agotamiento. Recuperá tu energía, tu foco y tu equilibrio.',
+    highlights: ['Técnicas de gestión del estrés', 'Mindfulness aplicado', 'Ejercicio terapéutico', 'Sesiones de coaching'],
+    featured: false,
+  },
+  {
+    id: 'vitalidad',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+    label: 'Plan',
+    name: 'Vitalidad',
+    subtitle: 'Cuerpo & Mente en Equilibrio',
+    description: 'El programa integral que combina entrenamiento físico, trabajo mental y hábitos sostenibles. Transformate de adentro hacia afuera.',
+    highlights: ['Programa físico + mental', 'Hábitos sostenibles', 'Gestión emocional', 'Plan nutricional completo'],
+    featured: true,
+  },
+  {
+    id: 'elite',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>`,
+    label: 'Plan',
+    name: 'Élite',
+    subtitle: 'Alto Rendimiento & Mentalidad',
+    description: 'El nivel más completo. Para deportistas, ejecutivos y líderes que no aceptan el promedio.',
+    highlights: ['Acceso prioritario', 'Sesiones 1:1 semanales', 'Plan élite personalizado', 'Mentoría continua'],
+    featured: false,
+  },
+];
+---
+
+<section id="servicios" class="py-24 bg-white dark:bg-zinc-900 transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="inline-block font-body text-sm font-600 tracking-widest text-amber-500 uppercase mb-3">Lo que ofrezco</span>
+      <h2 class="font-heading font-700 text-4xl md:text-5xl text-zinc-900 dark:text-white uppercase mb-4">
+        Mis <span class="text-amber-500">Programas</span>
+      </h2>
+      <p class="font-body text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto leading-relaxed">
+        Cada plan está diseñado para una necesidad específica. Encontrá el que más se adapta a tu momento.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map((s) => (
+        <div
+          class:list={[
+            'relative flex flex-col rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1',
+            s.featured
+              ? 'bg-zinc-900 dark:bg-zinc-950 text-white shadow-2xl shadow-zinc-300 dark:shadow-zinc-900 ring-1 ring-amber-500/30'
+              : 'bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-sm hover:shadow-lg'
+          ]}
+        >
+          {s.featured && (
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-700 px-4 py-1 rounded-full shadow-md uppercase tracking-wider">
+              Más popular
+            </span>
+          )}
+
+          <div
+            class:list={[
+              'w-12 h-12 rounded-2xl flex items-center justify-center mb-4',
+              s.featured ? 'bg-amber-500/20 text-amber-400' : 'bg-zinc-100 dark:bg-zinc-700 text-zinc-600 dark:text-zinc-300'
+            ]}
+            set:html={s.icon}
+          />
+
+          <p class:list={['font-body text-xs font-600 uppercase tracking-widest mb-1', s.featured ? 'text-zinc-400' : 'text-zinc-400 dark:text-zinc-500']}>
+            {s.label}
+          </p>
+          <h3 class:list={['font-heading font-700 text-xl uppercase leading-tight mb-1', s.featured ? 'text-white' : 'text-zinc-900 dark:text-white']}>
+            {s.name}
+          </h3>
+          <p class:list={['font-body text-sm mb-4', s.featured ? 'text-zinc-400' : 'text-zinc-500 dark:text-zinc-400']}>
+            {s.subtitle}
+          </p>
+          <p class:list={['font-body text-sm leading-relaxed mb-6 flex-1', s.featured ? 'text-zinc-300' : 'text-zinc-600 dark:text-zinc-300']}>
+            {s.description}
+          </p>
+
+          <ul class="flex flex-col gap-2 mb-6">
+            {s.highlights.map((item) => (
+              <li class="flex items-center gap-2">
+                <svg class="w-4 h-4 shrink-0 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class:list={['font-body text-sm', s.featured ? 'text-zinc-300' : 'text-zinc-600 dark:text-zinc-300']}>
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="https://wa.me/573026033283"
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[
+              'inline-flex items-center justify-center gap-1 font-600 text-sm py-3 px-6 rounded-full transition-all duration-200 cursor-pointer',
+              s.featured
+                ? 'bg-amber-500 hover:bg-amber-400 text-white shadow-lg shadow-amber-500/20'
+                : 'border-2 border-amber-400 text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20'
+            ]}
+          >
+            Quiero este plan
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

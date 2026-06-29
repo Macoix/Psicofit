@@ -1,43 +1,53 @@
 ---
 const services = [
   {
-    id: 'fisico',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
-    label: 'Plan',
-    name: 'Entrenamiento Personalizado',
-    subtitle: 'Enfoque Físico',
-    description: 'Rutinas progresivas diseñadas a la medida de tu cuerpo y objetivos. Seguimiento semanal y ajustes continuos para resultados reales.',
-    highlights: ['Rutinas personalizadas', 'Seguimiento semanal', 'Nutrición básica', 'Soporte por WhatsApp'],
-    featured: false,
-  },
-  {
-    id: 'estres',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>`,
-    label: 'Plan',
-    name: 'Estrés Laboral',
-    subtitle: 'y Fatiga Mental',
-    description: 'Estrategias psicológicas y físicas para romper el ciclo del agotamiento. Recuperá tu energía, tu foco y tu equilibrio.',
-    highlights: ['Técnicas de gestión del estrés', 'Mindfulness aplicado', 'Ejercicio terapéutico', 'Sesiones de coaching'],
-    featured: false,
-  },
-  {
-    id: 'vitalidad',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
-    label: 'Plan',
-    name: 'Vitalidad',
-    subtitle: 'Cuerpo & Mente en Equilibrio',
-    description: 'El programa integral que combina entrenamiento físico, trabajo mental y hábitos sostenibles. Transformate de adentro hacia afuera.',
-    highlights: ['Programa físico + mental', 'Hábitos sostenibles', 'Gestión emocional', 'Plan nutricional completo'],
+    id: 'reto-21',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M10 2.5h4" /><path d="M12 2.5V6" /><path d="M18.5 6.5l1.2-1.2" /><circle cx="12" cy="14" r="8" /><text x="12" y="14" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="700" fill="currentColor" stroke="none">21</text></svg>`,
+    label: 'Reto',
+    name: 'Más Firmeza + Energía',
+    subtitle: '21 Días',
+    description: 'Ideal para probar, empezar o recuperar el ritmo. Tono muscular, menos cansancio y hábitos sencillos con rutinas cortas.',
+    highlights: ['Rutinas cortas', 'Tono muscular', 'Manejo del estrés', 'Guía nutricional sencilla'],
     featured: true,
   },
   {
-    id: 'elite',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>`,
-    label: 'Plan',
-    name: 'Élite',
-    subtitle: 'Alto Rendimiento & Mentalidad',
-    description: 'El nivel más completo. Para deportistas, ejecutivos y líderes que no aceptan el promedio.',
-    highlights: ['Acceso prioritario', 'Sesiones 1:1 semanales', 'Plan élite personalizado', 'Mentoría continua'],
+    id: 'reto-60',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M10 2.5h4" /><path d="M12 2.5V6" /><path d="M18.5 6.5l1.2-1.2" /><circle cx="12" cy="14" r="8" /><text x="12" y="14" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="700" fill="currentColor" stroke="none">60</text></svg>`,
+    label: 'Reto',
+    name: 'Cuerpo Fuerte y Cambio Visible',
+    subtitle: '60 Días',
+    description: 'Para resultados físicos claros en tiempo definido. Desarrollo de masa, definición, fuerza y progresión constante.',
+    highlights: ['Plan adaptado', 'Fuerza y progresión', 'Guía nutricional', 'Seguimiento y apoyo mental'],
+    featured: true,
+  },
+  {
+    id: 'reto-90',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M10 2.5h4" /><path d="M12 2.5V6" /><path d="M18.5 6.5l1.2-1.2" /><circle cx="12" cy="14" r="8" /><text x="12" y="14" text-anchor="middle" dominant-baseline="central" font-size="8" font-weight="700" fill="currentColor" stroke="none">90</text></svg>`,
+    label: 'Reto',
+    name: 'Transformación Completa',
+    subtitle: '90 Días',
+    description: 'Cambio físico notable, equilibrio, constancia y resultados duraderos. Contarás con apoyo psicológico deportivo para superar barreras y mantener el enfoque en tus metas.',
+    highlights: ['Transformación completa', 'Guía psicológica', 'Guía nutricional', 'Resultados duraderos'],
+    featured: true,
+  },
+  {
+    id: 'mujeres',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.94 8.31C13.62 7.52 12.85 7 12 7s-1.62.52-1.94 1.31l-2.99 7.47C6.86 16.44 7.35 17 8 17h2v4h4v-4h2c.65 0 1.14-.56.92-1.22l-2.98-7.47zM12 6c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>`,
+    label: 'Asesoría',
+    name: 'Cuerpo Femenino Fuerte',
+    subtitle: 'Equilibrio Total',
+    description: 'Rutina 100% personalizada, diseñada respetando tu ciclo menstrual y tus necesidades reales. Definición, tonificación y control de peso.',
+    highlights: ['Ajustes según tu ciclo', 'Plan gimnasio o casa', 'Nutrición adaptada a ti', 'Seguimiento y corrección de técnica'],
+    featured: false,
+  },
+  {
+    id: 'hombres',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2.6" /><path d="M8 10.5a1.5 1.5 0 0 1 1.5-1.5h5a1.5 1.5 0 0 1 1.5 1.5V22h-3v-7h-2v7H8V10.5z" /></svg>`,
+    label: 'Asesoría',
+    name: 'Hombre Fuerte y Sólido',
+    subtitle: 'Fuerza, Masa y Energía',
+    description: 'Plan diseñado para llevar tu cuerpo y tu energía al máximo nivel. Desarrollo de masa muscular, fuerza y definición con progresión constante.',
+    highlights: ['Rutina adaptada a tu nivel', 'Optimización de energía', 'Guía nutricional para ganar músculo o definir', 'Seguimiento semanal'],
     featured: false,
   },
 ];
@@ -55,11 +65,12 @@ const services = [
       </p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="flex flex-wrap justify-center gap-6">
       {services.map((s) => (
         <div
           class:list={[
             'relative flex flex-col rounded-3xl p-6 transition-all duration-300 hover:-translate-y-1',
+            'w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]',
             s.featured
               ? 'bg-zinc-900 dark:bg-zinc-950 text-white shadow-2xl shadow-zinc-300 dark:shadow-zinc-900 ring-1 ring-amber-500/30'
               : 'bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 shadow-sm hover:shadow-lg'

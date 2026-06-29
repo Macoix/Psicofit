@@ -1,9 +1,19 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 const credentials = [
-  { label: 'Psicología', detail: 'Especialista en psicología del deporte y rendimiento' },
+  { label: 'Psicología Deportiva', detail: 'Especialista en psicología del deporte y rendimiento' },
   { label: 'Fitness', detail: 'Entrenador certificado con enfoque funcional' },
   { label: 'Coaching', detail: 'Metodología probada en cientos de casos reales' },
 ];
+
+const certDir = path.join(process.cwd(), 'public', 'certificates');
+const certificates = fs
+  .readdirSync(certDir)
+  .filter((file) => /\.(jpe?g|png|webp|avif)$/i.test(file))
+  .sort()
+  .map((file) => `/certificates/${file}`);
 ---
 
 <section id="trayectoria" class="py-24 bg-zinc-50 dark:bg-zinc-950 transition-colors duration-300">
@@ -14,14 +24,14 @@ const credentials = [
         <div class="relative">
           <div class="w-72 md:w-80 bg-white dark:bg-zinc-900 rounded-3xl shadow-xl shadow-zinc-200 dark:shadow-zinc-900 p-8 flex flex-col items-center text-center border border-zinc-100 dark:border-zinc-800">
             <div class="w-28 h-28 rounded-full border-4 border-amber-500/30 mb-5 overflow-hidden shadow-lg">
-              <img src="/oscar.jpg" alt="Oscar — Psicólogo y Coach" class="w-full h-full object-cover" width="112" height="112" />
+              <img src="/oscar.png" alt="Oscar — Psicólogo y Coach" class="w-full h-full object-cover" width="112" height="112" />
             </div>
             <h3 class="font-heading font-700 text-2xl uppercase text-zinc-900 dark:text-white mb-1">Oscar</h3>
             <p class="font-body text-sm text-amber-500 font-600 mb-4">@oscar.psicofit</p>
             <div class="w-full h-px bg-zinc-100 dark:bg-zinc-800 mb-4"></div>
             <div class="grid grid-cols-3 gap-3 w-full">
               <div>
-                <p class="font-heading font-700 text-xl text-zinc-900 dark:text-white">500+</p>
+                <p class="font-heading font-700 text-xl text-zinc-900 dark:text-white">100+</p>
                 <p class="font-body text-xs text-zinc-400">Clientes</p>
               </div>
               <div>
@@ -29,7 +39,7 @@ const credentials = [
                 <p class="font-body text-xs text-zinc-400">Años</p>
               </div>
               <div>
-                <p class="font-heading font-700 text-xl text-zinc-900 dark:text-white">4</p>
+                <p class="font-heading font-700 text-xl text-zinc-900 dark:text-white">5</p>
                 <p class="font-body text-xs text-zinc-400">Programas</p>
               </div>
             </div>
@@ -49,7 +59,7 @@ const credentials = [
         </h2>
 
         <p class="font-body text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
-          Soy Oscar, psicólogo especializado en el rendimiento humano y entrenador de fitness con más de 5 años
+          Soy Oscar, psicólogo deportivo especializado en el rendimiento humano y entrenador de fitness con más de 5 años
           acompañando a personas a transformar su vida desde adentro hacia afuera.
         </p>
         <p class="font-body text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-8">
@@ -73,16 +83,141 @@ const credentials = [
           ))}
         </div>
 
-        <a
-          href="#contacto"
-          class="inline-flex items-center gap-2 bg-zinc-900 dark:bg-amber-500 hover:bg-zinc-700 dark:hover:bg-amber-400 text-white font-600 text-base px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl cursor-pointer"
-        >
-          Hablemos
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
-        </a>
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            href="#contacto"
+            class="inline-flex items-center gap-2 bg-zinc-900 dark:bg-amber-500 hover:bg-zinc-700 dark:hover:bg-amber-400 text-white font-600 text-base px-8 py-4 rounded-full transition-all duration-200 hover:shadow-xl cursor-pointer"
+          >
+            Hablemos
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+
+          <button
+            type="button"
+            id="open-certs"
+            class="inline-flex items-center gap-2 border-2 border-amber-400 text-amber-600 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-600 text-base px-8 py-4 rounded-full transition-all duration-200 cursor-pointer"
+          >
+            Certificados
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
+
+  <div
+    id="certs-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-4"
+    data-images={JSON.stringify(certificates)}
+    role="dialog"
+    aria-modal="true"
+    aria-label="Galería de certificados"
+  >
+    <div class="absolute inset-0 bg-black/85 backdrop-blur-sm" data-close></div>
+
+    <div class="relative z-10 w-full max-w-3xl flex flex-col items-center">
+      <button
+        type="button"
+        data-close
+        aria-label="Cerrar"
+        class="absolute -top-2 right-0 sm:-right-2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="flex items-center gap-3 w-full mt-12">
+        <button
+          type="button"
+          data-prev
+          aria-label="Anterior"
+          class="shrink-0 w-11 h-11 rounded-full bg-white/10 hover:bg-amber-500 text-white flex items-center justify-center transition-colors cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+
+        <div class="flex-1 flex items-center justify-center">
+          <img
+            id="cert-img"
+            src=""
+            alt="Certificado"
+            class="max-h-[75vh] w-auto max-w-full rounded-xl shadow-2xl object-contain"
+          />
+        </div>
+
+        <button
+          type="button"
+          data-next
+          aria-label="Siguiente"
+          class="shrink-0 w-11 h-11 rounded-full bg-white/10 hover:bg-amber-500 text-white flex items-center justify-center transition-colors cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      <p id="cert-counter" class="mt-4 font-body text-sm text-zinc-300"></p>
+    </div>
+  </div>
 </section>
+
+<script>
+  const modal = document.getElementById('certs-modal');
+  const openBtn = document.getElementById('open-certs');
+
+  if (modal && openBtn) {
+    const img = document.getElementById('cert-img') as HTMLImageElement;
+    const counter = document.getElementById('cert-counter');
+    const images: string[] = JSON.parse(modal.dataset.images || '[]');
+    let index = 0;
+
+    const render = () => {
+      if (!images.length) return;
+      img.src = images[index];
+      if (counter) counter.textContent = `${index + 1} / ${images.length}`;
+    };
+
+    const open = () => {
+      render();
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+
+    const next = () => {
+      index = (index + 1) % images.length;
+      render();
+    };
+
+    const prev = () => {
+      index = (index - 1 + images.length) % images.length;
+      render();
+    };
+
+    openBtn.addEventListener('click', open);
+    modal.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', close));
+    modal.querySelector('[data-next]')?.addEventListener('click', next);
+    modal.querySelector('[data-prev]')?.addEventListener('click', prev);
+
+    document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+  }
+</script>
